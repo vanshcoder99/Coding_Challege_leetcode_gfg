@@ -14,7 +14,7 @@ class Solution {
             }
             for(int j=i+1;j<n;j++){
                 int size = strs[j].length();
-                if(vis[i] || size != s.length()) continue;
+                if(vis[j] || size != s.length()) continue;
                 int[] hash2 = new int[26];
                 String s1 = strs[j];
                 for(int k=0;k<size;k++) hash2[s1.charAt(k)-'a']++;
