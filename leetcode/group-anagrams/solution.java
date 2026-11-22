@@ -3,28 +3,24 @@ class Solution {
         int n = strs.length;
         List<List<String>> ans = new ArrayList<>();
         if(n == 0) return ans;
-        boolean vis[] = new boolean[n];
+        HashMap<String,List<String>> mpp = new HashMap<>();
         for(int i=0;i<n;i++){
-            if(vis[i]) continue; 
-            List<String> list = new ArrayList<>();
+            char[] hash = new char[26];
             String s = strs[i];
-            int[] hash1 = new int[26];
-            for(int k=0;k<s.length();k++){
-                hash1[s.charAt(k)-'a']++;
+            for(int j=0;j<s.length();j++) hash[s.charAt(j)-'a']++;
+            String arr = new String(hash);
+            if(mpp.containsKey(arr)){
+                List<String> list = mpp.get(arr);
+                list.add(s);
             }
-            for(int j=i+1;j<n;j++){
-                int size = strs[j].length();
-                if(vis[j] || size != s.length()) continue;
-                int[] hash2 = new int[26];
-                String s1 = strs[j];
-                for(int k=0;k<size;k++) hash2[s1.charAt(k)-'a']++;
-                if(Arrays.equals(hash1,hash2)){
-                    list.add(s1);
-                    vis[j] = true;
-                }
+            else {
+                List<String> list = new ArrayList<>();
+                list.add(s);
+                mpp.put(arr,list);
             }
-            list.add(s);
-            ans.add(list);
+        }
+        for(var it : mpp.values()){
+            ans.add(it);
         }
         return ans;
     }
