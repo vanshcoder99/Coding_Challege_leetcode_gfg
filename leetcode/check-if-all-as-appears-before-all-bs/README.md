@@ -9,10 +9,7 @@
 Given a string s consisting of only the characters 'a' and 'b', return true if every 'a' appears before every 'b' in the string. Otherwise, return false.
 
  
-
-Original
-Java
-Example 1:
+OriginalJavaExample 1:
 
 Input: s = "aaabbb"
 Output: true
@@ -39,11 +36,11 @@ There are no 'a's, hence, every 'a' appears before every 'b' and we return true.
 
 
  
-
 Constraints:
 
-1 <= s.length <= 100
-s[i] is either 'a' or 'b'.
+
+	1 <= s.length <= 100
+	s[i] is either 'a' or 'b'.
 
 ---
 *Auto-synced with [LeetPush](https://github.com/RIKKY-J/LeetPush)*
