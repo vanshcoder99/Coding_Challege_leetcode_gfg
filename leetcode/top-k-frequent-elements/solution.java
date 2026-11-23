@@ -7,13 +7,18 @@ class Solution {
             int val = nums[i];
             mpp.put(val,mpp.getOrDefault(val,0)+1);
         }
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> Integer.compare(b[1],a[1]));
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> Integer.compare(mpp.get(a),mpp.get(b)));
+
         for(var it : mpp.keySet()){
-            pq.offer(new int[]{it,mpp.get(it)});
+            pq.offer(it);
+             if(pq.size()>k){
+                pq.poll();
+            }
         }
         int i = 0;
-        while(i<k && !pq.isEmpty()){
-            arr[i++] = pq.poll()[0];
+        while(!pq.isEmpty() && i<k){
+            arr[i++] = pq.poll();
         }
         return arr;
     }
