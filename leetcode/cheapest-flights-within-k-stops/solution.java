@@ -14,9 +14,9 @@ class Solution {
         while(!q.isEmpty()){
             int[] arr = q.poll();
             int stops = arr[0], d = arr[1],node = arr[2];
+            if(stops>k) continue;
             for(var it : adj.get(node)){
                 int newnode = it[0],newdis = it[1];
-                if(stops+1>k+1) break;
                 if(newdis + d < dist[newnode]){
                     dist[newnode] = newdis + d;
                     q.offer(new int[]{stops+1,dist[newnode],newnode});
